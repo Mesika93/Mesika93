@@ -9,7 +9,7 @@
 | 1 | **Why Soldiers Break Step on Bridges** | Обвал Бротонського мосту, 1831, резонанс | He ordered his soldiers to stop marching in step — right in the middle of a bridge. | ✅ |
 | 1b | **The Great Diamond Hoax** | Засолене алмазне поле, 1872 (геолог Кларенс Кінг). За мотивами «How Mine Salting Worked» | He spent the whole day poking at anthills… | ✅ |
 | 2 | **The Stone That Said "Don't Build Here"** | Цунамі-камені в Японії (с. Анейосі, 2011) | He refused to build his house one step below an old stone. | ⬜ |
-| 3 | **Why They Armored the Planes Where No Bullets Hit** | Абрахам Вальд, помилка вцілілого, 2-га світова | He looked at a plane full of bullet holes and said: armor the parts with no holes. | ⬜ |
+| 3 | **Why They Armored the Planes Where No Bullets Hit** | Абрахам Вальд, помилка вцілілого, 2-га світова | He looked at a plane full of bullet holes and said: armor the parts with no holes. | ✅ |
 | 4 | **The Church That Refused a Lightning Rod** | Брешія, 1769: блискавка в церкву з порохом | He put an iron spike on his roof, and the priest called it an insult to God. | ⬜ |
 | 5 | **Why Warships Were Painted Like Zebras** | Камуфляж «dazzle», 1-ша світова | He painted a battleship in crazy black-and-white stripes. | ⬜ |
 | 6 | **Why Miners Carried a Tiny Bird** | Канарка в шахті, чадний газ | He took a canary in a cage a mile underground. | ⬜ |
