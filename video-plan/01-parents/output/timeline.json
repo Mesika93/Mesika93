@@ -1,0 +1,253 @@
+{
+ "duration": 87.00294784580498,
+ "scenes": [
+  {
+   "id": "phone",
+   "start": 0.0,
+   "end": 3.886
+  },
+  {
+   "id": "gaming",
+   "start": 3.886,
+   "end": 6.884
+  },
+  {
+   "id": "shoulders",
+   "start": 6.884,
+   "end": 11.246
+  },
+  {
+   "id": "bicycle",
+   "start": 11.246,
+   "end": 15.712
+  },
+  {
+   "id": "door",
+   "start": 15.712,
+   "end": 20.867
+  },
+  {
+   "id": "kitchen",
+   "start": 20.867,
+   "end": 27.27
+  },
+  {
+   "id": "stairs",
+   "start": 27.27,
+   "end": 32.957
+  },
+  {
+   "id": "hourglass",
+   "start": 32.957,
+   "end": 38.743
+  },
+  {
+   "id": "hundred",
+   "start": 38.743,
+   "end": 46.895
+  },
+  {
+   "id": "missed",
+   "start": 46.895,
+   "end": 52.727
+  },
+  {
+   "id": "call",
+   "start": 52.727,
+   "end": 57.307
+  },
+  {
+   "id": "mom",
+   "start": 57.307,
+   "end": 64.746
+  },
+  {
+   "id": "bus",
+   "start": 64.746,
+   "end": 67.558
+  },
+  {
+   "id": "hug",
+   "start": 67.558,
+   "end": 71.648
+  },
+  {
+   "id": "dinner",
+   "start": 71.648,
+   "end": 77.067
+  },
+  {
+   "id": "bench",
+   "start": 77.067,
+   "end": 81.667
+  },
+  {
+   "id": "end",
+   "start": 81.667,
+   "end": 87.003
+  }
+ ],
+ "captions": [
+  {
+   "start": 1.2,
+   "end": 2.836077097505669,
+   "en": "You declined her call again.",
+   "uk": "Ти знову скинув її дзвінок.",
+   "scene": "phone"
+  },
+  {
+   "start": 4.186077097505669,
+   "end": 5.833764172335602,
+   "en": "\"I'll call her back later.\"",
+   "uk": "«Передзвоню потім.»",
+   "scene": "gaming"
+  },
+  {
+   "start": 7.483764172335601,
+   "end": 9.595850340136055,
+   "en": "Remember when they were your whole world?",
+   "uk": "Пам'ятаєш, коли вони були всім твоїм світом?",
+   "scene": "shoulders"
+  },
+  {
+   "start": 11.645850340136056,
+   "end": 13.862426303854877,
+   "en": "She ran behind you... so you wouldn't fall.",
+   "uk": "Вона бігла позаду... щоб ти не впав.",
+   "scene": "bicycle"
+  },
+  {
+   "start": 16.112426303854875,
+   "end": 17.05190476190476,
+   "en": "Then you grew up.",
+   "uk": "Потім ти виріс.",
+   "scene": "door"
+  },
+  {
+   "start": 17.60190476190476,
+   "end": 19.01739229024943,
+   "en": "And they became... annoying.",
+   "uk": "І вони стали... набридливими.",
+   "scene": "door"
+  },
+  {
+   "start": 21.467392290249432,
+   "end": 23.14990929705215,
+   "en": "She still cooks for two.",
+   "uk": "Вона досі готує на двох.",
+   "scene": "kitchen"
+  },
+  {
+   "start": 23.69990929705215,
+   "end": 25.21988662131519,
+   "en": "Just in case you visit.",
+   "uk": "Раптом ти приїдеш.",
+   "scene": "kitchen"
+  },
+  {
+   "start": 27.869886621315192,
+   "end": 29.378253968253965,
+   "en": "His hands shake now.",
+   "uk": "У нього тепер тремтять руки.",
+   "scene": "stairs"
+  },
+  {
+   "start": 29.828253968253968,
+   "end": 30.90705215419501,
+   "en": "He won't tell you.",
+   "uk": "Він тобі не скаже.",
+   "scene": "stairs"
+  },
+  {
+   "start": 33.45705215419501,
+   "end": 34.76804988662131,
+   "en": "You think you have time.",
+   "uk": "Ти думаєш, що в тебе є час.",
+   "scene": "hourglass"
+  },
+  {
+   "start": 35.41804988662131,
+   "end": 37.69267573696145,
+   "en": "You see them maybe five times a year.",
+   "uk": "Ти бачиш їх, може, п'ять разів на рік.",
+   "scene": "hourglass"
+  },
+  {
+   "start": 39.14267573696145,
+   "end": 40.9412925170068,
+   "en": "If they live twenty more years...",
+   "uk": "Якщо вони проживуть ще двадцять років...",
+   "scene": "hundred"
+  },
+  {
+   "start": 41.5912925170068,
+   "end": 43.28541950113378,
+   "en": "that's one hundred visits.",
+   "uk": "це сто зустрічей.",
+   "scene": "hundred"
+  },
+  {
+   "start": 43.93541950113378,
+   "end": 44.44532879818593,
+   "en": "Left.",
+   "uk": "Всього.",
+   "scene": "hundred"
+  },
+  {
+   "start": 47.69532879818593,
+   "end": 49.87707482993196,
+   "en": "One day... the phone will stop ringing.",
+   "uk": "Одного дня... цей телефон перестане дзвонити.",
+   "scene": "missed"
+  },
+  {
+   "start": 53.02707482993196,
+   "end": 54.25680272108843,
+   "en": "So call her.",
+   "uk": "Тож подзвони їй.",
+   "scene": "call"
+  },
+  {
+   "start": 57.906802721088425,
+   "end": 63.29625850340135,
+   "en": "Hello? Sweetheart? Is everything okay?",
+   "uk": "Алло? Синку? Все добре?",
+   "scene": "mom"
+  },
+  {
+   "start": 65.14625850340136,
+   "end": 66.60818594104309,
+   "en": "Not because you have to.",
+   "uk": "Не тому що треба.",
+   "scene": "bus"
+  },
+  {
+   "start": 67.75818594104308,
+   "end": 69.99798185941043,
+   "en": "Because one day... you won't be able to.",
+   "uk": "А тому що колись... не зможеш.",
+   "scene": "hug"
+  },
+  {
+   "start": 72.04798185941044,
+   "end": 73.73049886621317,
+   "en": "They gave you their whole life.",
+   "uk": "Вони віддали тобі все життя.",
+   "scene": "dinner"
+  },
+  {
+   "start": 74.28049886621316,
+   "end": 75.41734693877552,
+   "en": "Give them an hour.",
+   "uk": "Дай їм годину.",
+   "scene": "dinner"
+  },
+  {
+   "start": 82.26734693877552,
+   "end": 83.25326530612246,
+   "en": "Call them today.",
+   "uk": "Подзвони їм сьогодні.",
+   "scene": "end"
+  }
+ ]
+}
