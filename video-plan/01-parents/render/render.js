@@ -1,18 +1,20 @@
 // Usage:
 //   node render.js <out_dir> stills          -> one PNG per scene (middle frame) for checking
-//   node render.js <out_dir> video [fps]     -> out_dir/video.mp4 with audio mix
+//   node render.js <out_dir> video [fps] [extra_scenes.js] -> out_dir/video.mp4 with audio mix
+// extra_scenes.js (optional) adds/overrides scenes on top of scene.html (shared character library)
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
 const fs = require('fs'), path = require('path');
 
 (async () => {
-  const [out, mode = 'stills', fpsArg = '30'] = process.argv.slice(2);
+  const [out, mode = 'stills', fpsArg = '30', extra] = process.argv.slice(2);
   const fps = +fpsArg;
   const tl = JSON.parse(fs.readFileSync(path.join(out, 'timeline.json'), 'utf8'));
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   page.on('pageerror', e => console.error('PAGE ERROR', e.message));
   await page.goto('file://' + path.join(__dirname, 'scene.html'));
+  if (extra) await page.addScriptTag({ path: path.resolve(extra) });
   await page.evaluate(t => window.setTimeline(t), tl);
   const grab = async frame => {
     const b64 = await page.evaluate(([f, fps]) => { window.drawFrame(f, fps); return document.getElementById('c').toDataURL('image/jpeg', 0.93).split(',')[1]; }, [frame, fps]);
@@ -20,9 +22,9 @@ const fs = require('fs'), path = require('path');
   };
   if (mode === 'stills') {
     fs.mkdirSync(path.join(out, 'stills'), { recursive: true });
-    for (const s of tl.scenes) {
+    for (const [i, s] of tl.scenes.entries()) {
       const f = Math.round(((s.start + s.end) / 2) * fps);
-      fs.writeFileSync(path.join(out, 'stills', `${s.id}.jpg`), await grab(f));
+      fs.writeFileSync(path.join(out, "stills", `${String(i).padStart(2, "0")}_${s.id}.jpg`), await grab(f));
     }
   } else {
     const total = Math.ceil(tl.duration * fps);
