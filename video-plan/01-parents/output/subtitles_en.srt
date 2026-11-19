@@ -1,92 +1,140 @@
 1
-00:00:01,200 --> 00:00:02,836
+00:00:03,600 --> 00:00:07,400
 You declined her call again.
 
 2
-00:00:04,186 --> 00:00:05,834
+00:00:09,200 --> 00:00:14,400
 "I'll call her back later."
 
 3
-00:00:07,484 --> 00:00:09,596
-Remember when they were your whole world?
+00:00:20,200 --> 00:00:22,600
+Later.
 
 4
-00:00:11,646 --> 00:00:13,862
-She ran behind you... so you wouldn't fall.
+00:00:26,000 --> 00:00:30,400
+Always later.
 
 5
-00:00:16,112 --> 00:00:17,052
-Then you grew up.
+00:00:36,000 --> 00:00:40,400
+Days became weeks.
 
 6
-00:00:17,602 --> 00:00:19,017
-And they became... annoying.
+00:00:48,800 --> 00:00:52,400
+Remember?
 
 7
-00:00:21,467 --> 00:00:23,150
-She still cooks for two.
+00:00:55,000 --> 00:01:02,000
+When they were your whole world.
 
 8
-00:00:23,700 --> 00:00:25,220
-Just in case you visit.
+00:01:05,000 --> 00:01:12,000
+She ran behind you... so you wouldn't fall.
 
 9
-00:00:27,870 --> 00:00:29,378
-His hands shake now.
+00:01:14,000 --> 00:01:18,200
+And when you did fall...
 
 10
-00:00:29,828 --> 00:00:30,907
-He won't tell you.
+00:01:19,600 --> 00:01:24,400
+she was always there.
 
 11
-00:00:33,457 --> 00:00:34,768
-You think you have time.
+00:01:26,500 --> 00:01:33,800
+He held your hand on your first day.
 
 12
-00:00:35,418 --> 00:00:37,693
-You see them maybe five times a year.
+00:01:35,800 --> 00:01:39,400
+Then you grew up.
 
 13
-00:00:39,143 --> 00:00:40,941
-If they live twenty more years...
+00:01:42,000 --> 00:01:48,400
+And they became... annoying.
 
 14
-00:00:41,591 --> 00:00:43,285
-that's one hundred visits.
+00:01:50,000 --> 00:01:54,600
+You left to build your life.
 
 15
-00:00:43,935 --> 00:00:44,445
-Left.
+00:01:55,400 --> 00:02:00,400
+They stayed. And waited.
 
 16
-00:00:47,695 --> 00:00:49,877
-One day... the phone will stop ringing.
+00:02:02,500 --> 00:02:06,600
+She still cooks for two.
 
 17
-00:00:53,027 --> 00:00:54,257
-So call her.
+00:02:07,200 --> 00:02:11,400
+Just in case you visit.
 
 18
-00:00:57,907 --> 00:01:03,296
-Hello? Sweetheart? Is everything okay?
+00:02:13,500 --> 00:02:21,200
+She keeps her phone close. Just in case.
 
 19
-00:01:05,146 --> 00:01:06,608
-Not because you have to.
+00:02:23,500 --> 00:02:27,200
+His hands shake now.
 
 20
-00:01:07,758 --> 00:01:09,998
-Because one day... you won't be able to.
+00:02:27,800 --> 00:02:31,400
+He won't tell you.
 
 21
-00:01:12,048 --> 00:01:13,730
-They gave you their whole life.
+00:02:33,500 --> 00:02:37,400
+Another birthday.
 
 22
-00:01:14,280 --> 00:01:15,417
-Give them an hour.
+00:02:38,400 --> 00:02:43,400
+Another empty chair.
 
 23
-00:01:22,267 --> 00:01:23,253
+00:02:45,000 --> 00:02:49,000
+You think you have time.
+
+24
+00:02:49,600 --> 00:02:54,400
+You see them maybe five times a year.
+
+25
+00:03:09,000 --> 00:03:16,200
+One day... the phone will stop ringing.
+
+26
+00:03:23,400 --> 00:03:28,400
+So call her.
+
+27
+00:03:31,000 --> 00:03:37,400
+"Sweetheart? Is everything okay?"
+
+28
+00:03:39,500 --> 00:03:46,400
+Not because you have to.
+
+29
+00:03:48,500 --> 00:03:56,200
+Because one day... you won't be able to.
+
+30
+00:03:58,500 --> 00:04:06,000
+Sit at her table.
+
+31
+00:04:08,500 --> 00:04:16,000
+Listen to his old stories.
+
+32
+00:04:18,500 --> 00:04:26,000
+Ask about their life.
+
+33
+00:04:30,000 --> 00:04:38,600
+They gave you their whole life.
+
+34
+00:04:40,800 --> 00:04:45,400
+Give them an hour.
+
+35
+00:04:47,000 --> 00:04:53,000
 Call them today.
 
