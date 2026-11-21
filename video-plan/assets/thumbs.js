@@ -78,6 +78,25 @@ T.thirty = () => {
   vignette(0.5);
   bigText(['ALONE', 'AT 30.'], 480, 330, 200, -0.05);
 };
+T.sameday = () => {
+  ctx.fillStyle = '#060504'; ctx.fillRect(0, 0, W, H);
+  ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W / 2, H); ctx.clip();
+  ctx.fillStyle = '#0a0c16'; ctx.fillRect(0, 0, W, H); glow(480, 760, 700, 'rgba(80,120,255,0.55)');
+  const a = person({ x: 480, y: 1480, s: 2.4, expr: 'tired', top: '#8a5a3e' }); head3d(a, 'rgba(110,150,255,1)', 1);
+  for (const sd of [-1, 1]) { ctx.beginPath(); ctx.ellipse(a.hx + sd * a.R * 0.32, a.hy + a.R * 0.14, a.R * 0.13, a.R * 0.05, 0, 0, 7); fs('rgba(60,40,80,0.5)'); }
+  ctx.save(); ctx.translate(480, 1130); phone(0, 0, 0.9, '#2a3d66'); glow(0, -80, 260, 'rgba(140,180,255,0.6)'); ctx.restore();
+  hand(350, 1150, 1.6, 0.4, C.skin); hand(610, 1150, 1.6, -0.4 + Math.PI, C.skin);
+  ctx.globalCompositeOperation = 'saturation'; ctx.globalAlpha = 0.4; ctx.fillStyle = '#808080'; ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+  ctx.save(); ctx.beginPath(); ctx.rect(W / 2, 0, W / 2, H); ctx.clip();
+  ctx.fillStyle = vgrad(0, H, ['#3a2a5a', '#e0705a', '#ffb070']); ctx.fillRect(0, 0, W, H);
+  circle(1440, 820, 260); fs('#ffe0a0'); glow(1440, 820, 800, 'rgba(255,200,120,0.8)');
+  const b = person({ x: 1440, y: 1480, s: 2.4, expr: 'determined' }); head3d(b, 'rgba(255,170,70,1)', -1);
+  ctx.restore();
+  line([W / 2, 0, W / 2, H], 16, '#000');
+  vignette(0.45);
+  bigText(['SAME DAY.'], W / 2, 190, 230, -0.03);
+};
 `;
 
 (async () => {

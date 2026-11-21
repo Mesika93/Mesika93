@@ -14,7 +14,7 @@ const fs = require('fs'), path = require('path');
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   page.on('pageerror', e => console.error('PAGE ERROR', e.message));
   await page.goto('file://' + path.join(__dirname, 'scene.html'));
-  if (extra) await page.addScriptTag({ path: path.resolve(extra) });
+  if (extra) for (const x of extra.split(',')) await page.addScriptTag({ path: path.resolve(x) });
   await page.evaluate(t => window.setTimeline(t), tl);
   const grab = async frame => {
     const b64 = await page.evaluate(([f, fps]) => { window.drawFrame(f, fps); return document.getElementById('c').toDataURL('image/jpeg', 0.93).split(',')[1]; }, [frame, fps]);
