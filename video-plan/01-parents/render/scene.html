@@ -141,7 +141,7 @@ function face(fx, fy, R, e, o) {
   else if (e === 'calm') { ctx.beginPath(); ctx.moveTo(fx - R * 0.14, my - R * 0.02); ctx.quadraticCurveTo(fx, my + R * 0.1, fx + R * 0.14, my - R * 0.02); fs(null, lw); }
   else line([fx - R * 0.12, my, fx + R * 0.12, my], lw);
   // bandage (Zero only)
-  if (!o.kind || o.kind === 'zero' || o.band) {
+  if ((!o.kind || o.kind === 'zero' || o.band) && !o.noBand) {
     ctx.save(); ctx.translate(fx + R * 0.5, fy + R * 0.22); ctx.rotate(-0.45);
     rr(-R * 0.17, -R * 0.065, R * 0.34, R * 0.13, R * 0.05); fs('#e6c9a0', 4 * s);
     circle(-R * 0.05, 0, 2.5 * s); fs('#a8865c'); circle(R * 0.05, 0, 2.5 * s); fs('#a8865c');

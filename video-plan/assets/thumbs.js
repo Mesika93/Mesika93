@@ -97,6 +97,19 @@ T.sameday = () => {
   vignette(0.45);
   bigText(['SAME DAY.'], W / 2, 190, 230, -0.03);
 };
+T.nobody = () => {
+  ctx.fillStyle = '#050405'; ctx.fillRect(0, 0, W, H);
+  // door with light under it on the right
+  const dx = 1380, w = 360, h = 760, y = 1000 - h;
+  glow(dx + w / 2, 1000, 420, 'rgba(255,220,160,0.75)');
+  ctx.fillStyle = '#ffe2b0'; ctx.fillRect(dx, 990, w, 14);
+  rr(dx - 16, y - 16, w + 32, h + 16, 4); fs('#1a1412', 10); rr(dx, y, w, h, 2); fs('#3a281e', 8); circle(dx + w - 50, y + h / 2, 18); fs('#c9a14a', 5);
+  ctx.fillStyle = 'rgba(255,220,160,0.12)'; ctx.beginPath(); ctx.moveTo(dx, 1004); ctx.lineTo(dx + w, 1004); ctx.lineTo(dx + w + 300, H); ctx.lineTo(dx - 500, H); ctx.fill();
+  const p = person({ x: 720, y: 1350, s: 2.6, expr: 'cry', look: 0.6, noBand: true }); head3d(p, 'rgba(255,190,110,1)', 1); tears(p);
+  hand(1130, 720, 2.0, -0.2, C.skin);
+  vignette(0.5);
+  bigText(['NOBODY.'], 600, 190, 230, -0.04);
+};
 `;
 
 (async () => {
