@@ -122,6 +122,22 @@ T.daysleft = () => {
   vignette(0.45);
   bigText(['DAYS', 'LEFT.'], 520, 300, 200, -0.05);
 };
+T.daysleft_ext = () => {
+  PEOPLE = [];
+  skyline(0, { y: 780, layers: 4, seed: 9, sky: ['#0a0e2a', '#25205a', '#6a3a7a'], lit: 0.5 });
+  ctx.fillStyle = '#16142a'; ctx.fillRect(0, 860, W, 220);
+  glow(1420, 520, 650, 'rgba(255,80,60,0.35)');
+  const m = person({ x: 1420, y: 1330, s: 2.2, kind: 'mom', old: true, skin: C.momSkin, top: '#d8c3a0', expr: 'happy', look: -0.5, blush: true });
+  RIM = 'rgba(120,200,255,1)'; RIM_SIDE = -1;
+  const z = person({ x: 560, y: 1420, s: 2.3, expr: 'shock', look: 0.8 });
+  RIM_SIDE = 1;
+  const ty = m.hy - m.R - 200;
+  glow(m.hx, ty, 320, 'rgba(255,60,40,0.8)');
+  rr(m.hx - 180, ty - 85, 360, 170, 85); fs('rgba(10,5,5,0.85)', 8, '#ff4a3a');
+  ctx.font = '150px Lucky'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#ff4a3a'; ctx.fillText('214', m.hx, ty + 8);
+  vignette(0.4);
+  bigText(['DAYS'], 470, 200, 220, -0.04); bigText(['LEFT.'], 470, 420, 220, -0.04, '#ffd23a');
+};
 `;
 
 (async () => {
@@ -132,8 +148,9 @@ T.daysleft = () => {
   await page.evaluate(async b64 => {
     const f = new FontFace('Lucky', Uint8Array.from(atob(b64), c => c.charCodeAt(0)).buffer); await f.load(); document.fonts.add(f);
   }, font);
+  for (const x of (process.env.EXTRA || '').split(',').filter(Boolean)) await page.addScriptTag({ path: path.resolve(x) });
   await page.addScriptTag({ content: THUMBS + ';window.T = T;' });
-  for (const name of await page.evaluate(() => Object.keys(window.T))) {
+  for (const name of await page.evaluate(() => Object.keys(window.T).filter(k => !k.endsWith('_ext') || typeof skyline !== 'undefined'))) {
     const b64 = await page.evaluate(n => { ctx.setTransform(1, 0, 0, 1, 0, 0); window.T[n](); applyGrain(1, 0.05);
       const c = document.createElement('canvas'); c.width = 1280; c.height = 720; c.getContext('2d').drawImage(document.getElementById('c'), 0, 0, 1280, 720);
       return c.toDataURL('image/jpeg', 0.92).split(',')[1]; }, name);
