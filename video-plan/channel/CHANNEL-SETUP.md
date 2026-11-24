@@ -1,4 +1,4 @@
-# Налаштування каналу Zynex — покроково
+# Налаштування каналу ZEROVERSE — покроково
 
 Все робиться в **YouTube Studio** (studio.youtube.com) з комп'ютера. Файли — у цій папці.
 
@@ -8,27 +8,27 @@
 
 | Що | Файл | Розмір |
 |---|---|---|
-| Фото профілю | `avatar.png` | 800×800 |
-| Банер | `banner.png` | 2560×1440 (назва й обличчя — у безпечній зоні, перевірено на телефоні) |
+| Фото профілю | `zeroverse/avatar2.png` | 800×800 |
+| Банер | `zeroverse/banner2.png` | 2560×1440 (назва й обличчя — у безпечній зоні, перевірено на телефоні) |
 | Водяний знак (кнопка «Підписатися» у куті відео) | `watermark.png` | 150×150 · показувати: **увесь відеоролик** |
 
 ---
 
 ## 2. Основна інформація — Customization → Основна інформація
 
-**Назва:** `Zynex`
-**Псевдонім (handle):** `@zynexfilms` (або `@zynex`, якщо вільний)
+**Назва:** `ZEROVERSE`
+**Псевдонім (handle):** `@zeroversefilms` (запасні: `@zeroverse.films`, `@zeroversetales`)
 
 **Опис каналу (вставити повністю):**
 ```
-Animated short films about life, discipline, family, and becoming better.
+Welcome to ZEROVERSE — where every day counts.
 
-Same day. Two choices. Which one will you be?
+Animated "what if" stories and short films about time, family, discipline, and the choices that shape your life.
 
 🎬 New animated short film every week.
-💭 "What If" stories that make you rethink your days.
+💭 What if you could see how many days you have left?
 
-Subscribe — and start today.
+Subscribe — and make today count.
 ```
 
 **Посилання:** поки не потрібні. Пізніше — Instagram/TikTok каналу.
@@ -93,10 +93,7 @@ For everyone who keeps saying "I'll call them later."
 ## 6. Канал — Studio → Налаштування → Канал
 
 - **Країна проживання:** Україна (впливає на монетизацію)
-- **Ключові слова каналу:**
-```
-animated short film, animation, motivation, self improvement, discipline, what if, life lessons, family, parents, emotional
-```
+- **Ключові слова каналу:** з файлу `zeroverse/KEYWORDS.txt` (вміщається в ліміт 500 символів)
 - **Розширені налаштування → Аудиторія:** «Ні, канал не призначений для дітей» (обов'язково — інакше вимкнуться коментарі й рекомендації).
 
 ---

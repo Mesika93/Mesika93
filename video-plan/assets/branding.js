@@ -3,7 +3,8 @@ const { chromium } = require('playwright');
 const fs = require('fs'), path = require('path');
 const out = process.argv[2]; fs.mkdirSync(out, { recursive: true });
 const font = fs.readFileSync(path.join(__dirname, 'LuckiestGuy.ttf')).toString('base64');
-const NAME = process.env.CHANNEL || 'ZYNEX';
+const NAME = process.env.CHANNEL || 'ZEROVERSE';
+const TAGLINE = process.env.TAGLINE || 'WHERE EVERY DAY COUNTS';
 
 const DRAW = `
 function head3d(p, light, side) {
@@ -51,6 +52,34 @@ window.banner = () => {
   ctx.fillText('Animated short films about life,', W / 2, 610); ctx.fillText('discipline & becoming better.', W / 2, 652); ctx.restore();
   for (const [x, y, s] of [[700, 420, 20], [1230, 410, 16]]) sparkle(x, y, s, 0.9);
 };
+window.avatar2 = () => {
+  PEOPLE = []; const cx = W / 2, cy = H / 2;
+  skyline(0, { y: 900, layers: 4, seed: 21, sky: ['#070a22', '#1e1a52', '#5a2f7a'], lit: 0.55 });
+  glow(cx, cy - 20, 520, 'rgba(120,200,255,0.45)');
+  glow(cx, cy - 30, 420, 'rgba(140,210,255,0.4)');
+  RIM = 'rgba(140,210,255,1)';
+  const p = person({ x: cx, y: cy + 95 * 2.3 * 0.72 + 210 * 2.3 + 20, s: 2.3, expr: 'determined' });
+  for (const [x, y, s] of [[cx - 400, cy - 330, 40], [cx + 410, cy - 280, 30], [cx + 380, cy + 200, 20]]) sparkle(x, y, s);
+};
+window.banner2 = () => {
+  PEOPLE = [];
+  skyline(0, { y: 900, layers: 4, seed: 33, sky: ['#060920', '#1d1950', '#6a3478'], lit: 0.5 });
+  ctx.fillStyle = '#100d24'; ctx.fillRect(0, 900, W, 180);
+  glow(W / 2, 540, 760, 'rgba(110,90,255,0.35)');
+  // left: Zero with the glowing day counter, right: a street lamp
+  RIM = 'rgba(140,210,255,1)';
+  const p = person({ x: 360, y: 1000, s: 1.35, expr: 'determined', look: 0.5 });
+  tag(p, 'DAY 1', { col: '#9fe7ff', size: 36 });
+  line([1460, 1000, 1460, 400], 12, '#1a1830'); line([1460, 400, 1400, 400], 12, '#1a1830'); glow(1400, 420, 320, 'rgba(255,210,140,0.6)');
+  lightBeam(1400, 415, 180, 600, 'rgba(255,210,140,1)', 0.18);
+  ctx.fillStyle = vgrad(720, 990, ['rgba(6,9,32,0)', 'rgba(6,9,32,1)']); ctx.fillRect(0, 720, W, 360);
+  ctx.fillStyle = 'rgba(6,9,32,0.55)'; ctx.beginPath(); ctx.ellipse(W / 2 + 80, 560, 560, 170, 0, 0, 7); ctx.fill();
+  lucky('${NAME}', W / 2 + 80, 490, 150, '#fff', 0.13, -0.02);
+  ctx.save(); ctx.font = '44px Lucky'; ctx.textAlign = 'center'; ctx.lineJoin = 'round'; ctx.lineWidth = 8; ctx.strokeStyle = '#000';
+  ctx.strokeText('${TAGLINE}', W / 2 + 80, 600); ctx.fillStyle = '#ffd23a'; ctx.fillText('${TAGLINE}', W / 2 + 80, 600); ctx.restore();
+  ctx.save(); ctx.shadowColor = 'rgba(0,0,0,0.9)'; ctx.shadowBlur = 14; ctx.font = 'bold 26px "DejaVu Sans"'; ctx.textAlign = 'center'; ctx.fillStyle = '#e8e4ff';
+  ctx.fillText('Animated "what if" stories about time, family & life.', W / 2 + 80, 662); ctx.restore();
+};
 `;
 (async () => {
   const browser = await chromium.launch();
@@ -58,6 +87,7 @@ window.banner = () => {
   page.on('pageerror', e => console.error('PAGE ERROR', e.message));
   await page.goto('file://' + path.join(__dirname, '../01-parents/render/scene.html'));
   await page.evaluate(async b64 => { const f = new FontFace('Lucky', Uint8Array.from(atob(b64), c => c.charCodeAt(0)).buffer); await f.load(); document.fonts.add(f); }, font);
+  for (const x of (process.env.EXTRA || '').split(',').filter(Boolean)) await page.addScriptTag({ path: path.resolve(x) });
   await page.addScriptTag({ content: DRAW });
   const shot = (fn, sx, sy, sw, sh, ow, oh) => page.evaluate(([fn, sx, sy, sw, sh, ow, oh]) => {
     const cv = document.getElementById('c'); cv.width = 3840; cv.height = 2160; ctx.setTransform(2, 0, 0, 2, 0, 0);
@@ -65,7 +95,8 @@ window.banner = () => {
     const o = document.createElement('canvas'); o.width = ow; o.height = oh; const g = o.getContext('2d'); g.imageSmoothingQuality = 'high';
     g.drawImage(cv, sx * 2, sy * 2, sw * 2, sh * 2, 0, 0, ow, oh); return o.toDataURL('image/png').split(',')[1];
   }, [fn, sx, sy, sw, sh, ow, oh]);
-  fs.writeFileSync(path.join(out, 'avatar.png'), Buffer.from(await shot('avatar', 420, 0, 1080, 1080, 800, 800), 'base64'));
-  fs.writeFileSync(path.join(out, 'banner.png'), Buffer.from(await shot('banner', 0, 0, 1920, 1080, 2560, 1440), 'base64'));
+  const v = process.env.STYLE === 'night' ? '2' : '';
+  fs.writeFileSync(path.join(out, 'avatar' + v + '.png'), Buffer.from(await shot('avatar' + v, 420, 0, 1080, 1080, 800, 800), 'base64'));
+  fs.writeFileSync(path.join(out, 'banner' + v + '.png'), Buffer.from(await shot('banner' + v, 0, 0, 1920, 1080, 2560, 1440), 'base64'));
   await browser.close();
 })();
