@@ -6,6 +6,9 @@ Default visual style: the v2 look from `video-plan/05-days-left/render/style2.js
 
 ## Production standard for every new video (user asked: better animation, editing, music, more eye candy)
 
+- **Characters have full bodies**: use `figure()` from `video-plan/assets/rig.js` (arms with elbows, legs with knees, shoes;
+  poses stand/walk/run/sit/wave/point/armsUp/hold/think/pockets/reach/hug/slump) in every shot where the body is visible.
+  Bust-only `person()` is only for close-ups or characters behind a desk/table.
 - **Animation**: characters blink, breathe, turn heads, walk with arm swing; secondary motion (hair, hood, steam, leaves);
   no scene is ever static — something always moves.
 - **Eye candy**: particles (dust, sparks, snow, fireflies), light leaks and lens glow, volumetric beams, parallax depth layers,
