@@ -138,6 +138,21 @@ T.daysleft_ext = () => {
   vignette(0.4);
   bigText(['DAYS'], 470, 200, 220, -0.04); bigText(['LEFT.'], 470, 420, 220, -0.04, '#ffd23a');
 };
+T.younger_ext = () => {
+  PEOPLE = [];
+  skyline(0, { y: 780, layers: 4, seed: 41, sky: ['#070a22', '#1e1a52', '#4a2a6a'], lit: 0.5 });
+  ctx.fillStyle = '#12122a'; ctx.fillRect(0, 860, W, 220);
+  // streetlight beam on the kid
+  glow(1380, 300, 500, 'rgba(255,210,140,0.6)'); lightBeam(1380, 260, 420, 900, 'rgba(255,215,150,1)', 0.25);
+  const r = rand(4); ctx.save(); ctx.globalCompositeOperation = 'lighter'; for (let i = 0; i < 40; i++) { const x = 1100 + r() * 560, y = 250 + r() * 700; glow(x, y, 18, 'rgba(255,215,140,0.5)'); } ctx.restore();
+  RIM = 'rgba(140,190,255,1)'; RIM_SIDE = 1;
+  const a = person({ x: 520, y: 1450, s: 2.4, expr: 'shock', look: 0.8, top: '#c9692e' });
+  RIM = 'rgba(255,210,140,1)'; RIM_SIDE = -1;
+  rr(1380 - 95 * 1.8, 1180 - 150 * 1.8, 190 * 1.8, 120 * 1.8, 50); fs('#3d6fb0', 10);
+  const k = person({ x: 1380, y: 1180, s: 1.8, kind: 'kid', top: '#ff8a3c', band: true, expr: 'happy', look: -0.7 });
+  vignette(0.4);
+  bigText(['ME?'], 960, 170, 230, -0.04, '#ffd23a');
+};
 `;
 
 (async () => {

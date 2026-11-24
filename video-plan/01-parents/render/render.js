@@ -14,6 +14,9 @@ const fs = require('fs'), path = require('path');
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   page.on('pageerror', e => console.error('PAGE ERROR', e.message));
   await page.goto('file://' + path.join(__dirname, 'scene.html'));
+  // display font for kinetic titles (Luckiest Guy, Apache 2.0)
+  const fontB64 = fs.readFileSync(path.join(__dirname, '../../assets/LuckiestGuy.ttf')).toString('base64');
+  await page.evaluate(async b64 => { const f = new FontFace('Lucky', Uint8Array.from(atob(b64), c => c.charCodeAt(0)).buffer); await f.load(); document.fonts.add(f); }, fontB64);
   if (extra) for (const x of extra.split(',')) await page.addScriptTag({ path: path.resolve(x) });
   await page.evaluate(t => window.setTimeline(t), tl);
   const grab = async frame => {
