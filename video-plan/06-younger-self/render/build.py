@@ -2,7 +2,7 @@
 
 Usage: python3 build.py <out_dir>
 Then:  node ../../01-parents/render/render.js <out_dir> video 30 \
-         ../../02-twenties/render/scenes20.js,../../05-days-left/render/scenes5.js,../../05-days-left/render/style2.js,../../assets/fx.js,scenes6.js
+         ../../02-twenties/render/scenes20.js,../../05-days-left/render/scenes5.js,../../05-days-left/render/style2.js,../../assets/fx.js,../../assets/rig.js,scenes6.js
 """
 import json, os, sys, wave
 import numpy as np
@@ -45,7 +45,7 @@ STORY = [
     ("desk6", 6, [c(0.8, 5.4, "*Day* *1.*", "День 1.")], dict(trans="flash", grade="warm", leak='rgba(255,180,100,', cam=[860, 600, 1.0, 840, 620, 1.1])),
     ("guitar6", 7.5, [c(0.6, 3.4, "Bad at first.", "Спершу погано."), c(4.2, 7.0, "Then a little *better*.", "Потім трохи краще.")], dict(trans="whip", grade="warm")),
     ("drawing6", 7.5, [c(0.8, 6.8, "Page after *page*.", "Сторінка за сторінкою.")], dict(trans="whip", grade="warm", cam=[1000, 560, 1.0, 1080, 560, 1.1])),
-    ("run", 6, [c(0.8, 5.4, "Every *morning*.", "Щоранку.")], dict(trans="whip", grade="dawn")),
+    ("run6", 6, [c(0.8, 5.4, "Every *morning*.", "Щоранку.")], dict(trans="whip", grade="dawn")),
     ("plane", 7.5, [c(0.8, 6.8, "The first *trip*.", "Перша подорож.")], dict(trans="whip", grade="warm", leak='rgba(255,200,130,')),
     ("oceanSee", 7.5, [c(0.8, 6.8, "The *ocean*. Finally.", "Океан. Нарешті.")], dict(trans="zoom", grade="warm", cam=[960, 640, 1.15, 960, 600, 1.0])),
     ("callMom6", 6, [c(0.8, 5.4, "And the call he kept *postponing*.", "І дзвінок, який він усе відкладав.")], dict(trans="whip", grade="warm")),

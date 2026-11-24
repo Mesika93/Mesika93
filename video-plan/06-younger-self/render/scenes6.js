@@ -12,6 +12,15 @@ function kidP(o) { // 15-year-old Zero with a backpack
   return p;
 }
 function adultP(o) { return person(Object.assign({}, ADULT, o)); }
+// full-body versions (assets/rig.js)
+function adultF(o) { return figure(Object.assign({}, ADULT, o)); }
+function kidF(o) {
+  const s = o.s || 1, hipY = o.y - 116 * s, top = hipY + 10 * s - 140 * s;
+  rr(o.x - 95 * s, top + 10 * s, 190 * s, 120 * s, 30 * s); fs('#3d6fb0', 7 * s);
+  const p = figure(Object.assign({}, KID, o));
+  line([o.x - 45 * s, top + 20 * s, o.x - 55 * s, hipY], 9 * s, '#2a4f80'); line([o.x + 45 * s, top + 20 * s, o.x + 55 * s, hipY], 9 * s, '#2a4f80');
+  return p;
+}
 // blurred skyline is expensive: render it once per dawn level into a cache (drawn at device scale, before camera transforms)
 const SKY_CACHE = {};
 function skyCached(dawn) {
@@ -71,8 +80,7 @@ S.rainCity = (t, d) => {
 S.walkHome = (t, d) => {
   PEOPLE = []; streetNight(t, { pan: t * 10 });
   const x = lerp(380, 820, t / d), s = 1.15;
-  const p = adultP({ x, y: 1000, s, expr: 'tired', look: 0.6, bob: Math.abs(Math.sin(t * 6)) * -10 });
-  walkHands(p, t, s, 6);
+  adultF({ x, y: 1000, s, expr: 'tired', look: 0.6, pose: 'walk', phase: t * 0.9, dir: 1 });
   rain(t, 120, 0.35);
 };
 S.lampGlow = (t, d) => {
@@ -80,15 +88,15 @@ S.lampGlow = (t, d) => {
   streetNight(t, { magic: m, rainA: 1 - m * 0.6 });
   fireflies(t, Math.floor(10 + 40 * m), LAMP - 150, 500, 500, 450, 'rgba(255,210,130,', 7);
   // silhouette forms
-  ctx.save(); ctx.globalAlpha = prog(t, d * 0.45, d); ctx.fillStyle = '#0a0812';
-  rr(LAMP + 97 - 70, 1000 - 125, 140, 125, 30); ctx.fill(); circle(LAMP + 97, 1000 - 125 - 60, 75); ctx.fill(); ctx.restore();
-  adultP({ x: 420, y: 1000, s: 1.15, expr: t > d * 0.5 ? 'shock' : 'calm', look: 0.9 });
+  ctx.save(); ctx.globalAlpha = prog(t, d * 0.45, d); ctx.fillStyle = '#0a0812'; const sx = LAMP + 97;
+  ctx.fillRect(sx - 40, 1000 - 140, 30, 140); ctx.fillRect(sx + 10, 1000 - 140, 30, 140);
+  rr(sx - 85, 1000 - 300, 170, 175, 30); ctx.fill(); circle(sx, 1000 - 360, 85); ctx.fill(); ctx.restore();
+  adultF({ x: 420, y: 1000, s: 1.15, expr: t > d * 0.5 ? 'shock' : 'calm', look: 0.9, pose: t > d * 0.5 ? 'stand' : 'pockets' });
 };
 S.reveal = (t, d) => {
   PEOPLE = []; streetNight(t, { magic: 1, rainA: 0.4 });
   fireflies(t, 30, LAMP - 200, 450, 600, 500, 'rgba(255,215,140,', 9);
-  const k = kidP({ x: LAMP + 97, y: 1000, s: 1.25, expr: 'happy', look: -0.6 });
-  hand(k.hx - 160 + Math.sin(t * 8) * 25, k.hy - 40, 1.0, -0.4, C.skin);
+  kidF({ x: LAMP + 97, y: 1000, s: 1.25, expr: 'happy', look: -0.6, pose: 'wave' });
 };
 S.title6 = (t, d) => {
   ctx.fillStyle = '#05040a'; ctx.fillRect(0, 0, W, H);
@@ -100,13 +108,13 @@ S.title6 = (t, d) => {
 S.meet = (t, d) => {
   PEOPLE = []; streetNight(t, { magic: 0.4, rainA: 0.3 });
   fireflies(t, 14, 400, 450, 1100, 400, 'rgba(255,215,140,', 2);
-  adultP({ x: 700, y: 1000, s: 1.2, expr: 'shock', look: 0.8 });
-  const k = kidP({ x: 1250, y: 1000, s: 1.0, expr: 'happy', look: -0.8, bob: Math.abs(Math.sin(t * 5)) * -16 });
+  adultF({ x: 700, y: 1000, s: 1.2, expr: 'shock', look: 0.8, pose: 'stand' });
+  kidF({ x: 1250, y: 1000, s: 1.0, expr: 'happy', look: -0.8, pose: t % 3 < 1.6 ? 'armsUp' : 'point', dir: -1 });
 };
 S.kidClose = (t, d) => {
   PEOPLE = []; streetNight(t, { magic: 0.4, rainA: 0.3 });
   const ex = S.kidClose.expr || 'happy';
-  kidP({ x: 1180, y: 1060, s: 2.0, expr: ex, look: -0.6, tear: 0.6 });
+  kidP({ x: 1180, y: 990, s: 2.0, expr: ex, look: -0.6, tear: 0.6 });
   fireflies(t, 10, 700, 200, 900, 500, 'rgba(255,215,140,', 5);
 };
 S.kidCloseSad = (t, d) => { S.kidClose.expr = 'sad'; S.kidClose(t, d); S.kidClose.expr = 'happy'; };
@@ -144,17 +152,15 @@ S.roomMess = (t, d) => {
   for (let i = 0; i < 4; i++) { rr(1100 - i * 6, 980 - i * 26, 230, 26, 3); fs('#c9a06a', 4); }
   glow(1560, 520, 700, 'rgba(90,120,255,0.35)'); glow(760, 500, 500, 'rgba(255,190,120,0.25)');
   dust(t, 30, 'rgba(160,160,180,0.3)');
-  kidP({ x: 760, y: 1000, s: 1.15, expr: t > 2 ? 'shock' : 'calm', look: Math.sin(t * 0.8) });
+  kidF({ x: 760, y: 1000, s: 1.15, expr: t > 2 ? 'shock' : 'calm', look: Math.sin(t * 0.8), pose: t > 4 ? 'think' : 'stand' });
 };
 
 // ---------------- Act 3: the truth ----------------
 S.curb = (t, d) => {
   PEOPLE = []; streetNight(t, { magic: 0.2, rainA: 0.7 });
   // adult sitting on the curb, hugging knees
-  const p = adultP({ x: 760, y: 1010, s: 1.2, expr: 'sad', look: 0.2 });
-  for (const sd of [-1, 1]) { rr(760 + sd * 84 - 66, 1010 - 180, 132, 190, 60); fs('#3a3d48', 8); }
-  hand(712, 860, 1.1, 0.3, C.skin); hand(808, 860, 1.1, Math.PI - 0.3, C.skin);
-  kidP({ x: 1250, y: 1000, s: 1.0, expr: 'sad', look: -0.8 });
+  adultF({ x: 760, y: 1005, s: 1.2, expr: 'sad', look: 0.2, pose: 'sit' });
+  kidF({ x: 1250, y: 1000, s: 1.0, expr: 'sad', look: -0.8, pose: 'stand' });
 };
 S.dreamsCross = (t, d) => { ctx.fillStyle = '#0a0a10'; ctx.fillRect(0, 0, W, H); glow(W / 2, H / 2, 800, 'rgba(160,180,255,0.2)'); notebook(W / 2, H / 2 - 30, 1.15, 'cross', t); rain(t, 120, 0.25); };
 
@@ -162,24 +168,26 @@ S.dreamsCross = (t, d) => { ctx.fillStyle = '#0a0a10'; ctx.fillRect(0, 0, W, H);
 S.giveBook = (t, d) => {
   PEOPLE = []; streetNight(t, { magic: 0.6, rainA: 0.4 });
   fireflies(t, 20, 600, 450, 900, 400, 'rgba(255,215,140,', 6);
-  adultP({ x: 700, y: 1000, s: 1.2, expr: t > d * 0.6 ? 'shock' : 'sad', look: 0.8 });
-  const k = kidP({ x: 1200, y: 1000, s: 1.0, expr: 'calm', look: -0.8 });
-  const m = prog(t, 1.0, d * 0.7), bx = lerp(1080, 880, m), by = lerp(820, 760, m);
-  notebook(bx, by, 0.32, 'closed', t); hand(bx + 40, by + 40, 1.0, -0.3, C.skin); if (m > 0.8) hand(bx - 50, by + 30, 1.1, 0.3, C.skin);
+  const m = prog(t, 1.0, d * 0.7);
+  const a = adultF({ x: 680, y: 1000, s: 1.2, expr: t > d * 0.6 ? 'shock' : 'sad', look: 0.8, pose: m > 0.6 ? 'reach' : 'stand', dir: 1 });
+  const k = kidF({ x: 1230, y: 1000, s: 1.0, expr: 'calm', look: -0.8, pose: m < 0.95 ? 'reach' : 'stand', dir: -1 });
+  const kh = k.hands[0] || [1100, 760], ah = a.hands[1] || [820, 760];
+  notebook(lerp(kh[0], ah[0], m), lerp(kh[1], ah[1], m) - 10, 0.32, 'closed', t);
 };
 S.fade = (t, d) => {
   PEOPLE = []; streetNight(t, { magic: 1 - prog(t, d * 0.5, d), rainA: 0.25 });
   const k = prog(t, 2.0, d - 1);
-  ctx.save(); ctx.globalAlpha = 1 - k; kidP({ x: 1180, y: 1000, s: 1.3, expr: 'happy', look: -0.6 }); ctx.restore();
-  sparksRise(t, 1060, 520, 240, 480, 160, k);
+  ctx.save(); ctx.globalAlpha = 1 - k; kidF({ x: 1180, y: 1000, s: 1.3, expr: 'happy', look: -0.6, pose: t > 1.5 ? 'wave' : 'stand' }); ctx.restore();
+  sparksRise(t, 1040, 420, 280, 580, 180, k);
   glow(1180, 700, 380, `rgba(255,215,140,${0.4 * (1 - k)})`);
 };
 S.alone = (t, d) => {
   PEOPLE = []; const dawn = prog(t, 0, d) * 0.6;
   streetNight(t, { dawn, rainA: Math.max(0, 0.4 - t * 0.1), lampGlow: 1 - dawn });
   sparksRise(t + 6, 900, 400, 300, 300, 30, 0.7 + t * 0.05);
-  adultP({ x: 900, y: 1000, s: 1.3, expr: t > d * 0.5 ? 'determined' : 'sad', look: 0.3 });
-  notebook(980, 860, 0.3, 'closed', t); hand(1010, 900, 1.1, -0.3, C.skin);
+  const a = adultF({ x: 900, y: 1000, s: 1.3, expr: t > d * 0.5 ? 'determined' : 'sad', look: 0.3, pose: 'hold' });
+  const hc = a.hands.length ? [(a.hands[0][0] + a.hands[1][0]) / 2, (a.hands[0][1] + a.hands[1][1]) / 2] : [900, 820];
+  notebook(hc[0], hc[1] - 20, 0.3, 'closed', t);
 };
 
 // ---------------- Act 5: the rise ----------------
@@ -238,7 +246,7 @@ S.oceanSee = (t, d) => {
   for (let i = 0; i < 14; i++) { const y = 620 + i * 20, x = ((i * 173 + t * 60 * (1 + i * 0.1)) % (W + 200)) - 100; ctx.fillStyle = 'rgba(255,230,190,0.5)'; ctx.fillRect(x, y, 120 + i * 8, 3); }
   ctx.fillStyle = '#e8c890'; ctx.fillRect(0, 880, W, 200);
   const k = prog(t, 0, d);
-  person({ x: 760, y: 1080, s: 1.3, top: ADULT.top, expr: 'happy', look: 0.4 });
+  adultF({ x: 760, y: 1040, s: 1.1, expr: 'happy', look: 0.4, pose: t > 2 ? 'armsUp' : 'stand' });
   lightLeak(t, 'rgba(255,200,120,', 0.25);
 };
 S.checks = (t, d) => { ctx.fillStyle = '#1a120c'; ctx.fillRect(0, 0, W, H); glow(W / 2, H / 2, 900, 'rgba(255,190,110,0.35)'); notebook(W / 2, H / 2 - 30, 1.15, 'tick', t); fireflies(t, 20, 200, 100, 1500, 800, 'rgba(255,220,150,', 8); };
@@ -255,13 +263,22 @@ S.tenYears = (t, d) => {
   PEOPLE = []; streetNight(t, { magic: prog(t, d * 0.3, d), rainA: 0 });
   fireflies(t, 20 + Math.floor(prog(t, d * 0.3, d) * 30), LAMP - 200, 450, 600, 450, 'rgba(255,215,140,', 12);
   // present Zero (now the one with a calm, proud face) and the older self appears in the light
-  adultP({ x: 640, y: 1000, s: 1.2, expr: t > d * 0.6 ? 'happy' : 'calm', look: 0.8 });
+  adultF({ x: 640, y: 1000, s: 1.2, expr: t > d * 0.6 ? 'happy' : 'calm', look: 0.8, pose: t > d * 0.75 ? 'wave' : 'pockets' });
   const a = prog(t, d * 0.35, d * 0.7);
   ctx.save(); ctx.globalAlpha = a;
-  const o = person({ x: LAMP + 97, y: 1000, s: 1.25, top: '#b85a26', expr: 'happy', look: -0.7 });
+  const o = figure({ x: LAMP + 97, y: 1000, s: 1.25, top: '#b85a26', expr: 'happy', look: -0.7, pose: a > 0.9 ? 'reach' : 'stand', dir: -1 });
   for (const sd of [-1, 1]) { ctx.beginPath(); ctx.ellipse(o.hx + sd * o.R * 0.93, o.hy - o.R * 0.05, o.R * 0.17, o.R * 0.3, 0, 0, 7); fs('#c4c4c4', 6); }
   ctx.restore();
-  if (a > 0.9) hand(LAMP - 40, 820 + Math.sin(t * 3) * 6, 1.1, -0.3, C.skin);
 };
 
+S.run6 = (t, d) => {
+  PEOPLE = []; const sc = t * 420;
+  ctx.fillStyle = vgrad(0, H, ['#3a2a5a', '#e0705a', '#ffb070']); ctx.fillRect(0, 0, W, H);
+  circle(1500, 640, 130); fs('#ffe0a0'); glow(1500, 640, 600, 'rgba(255,200,120,0.7)');
+  ctx.fillStyle = '#5a3a4a'; for (let i = 0; i < 6; i++) { const x = ((i * 520 - sc * 0.25) % 3120 + 3120) % 3120 - 400; ctx.beginPath(); ctx.ellipse(x, 820, 420, 200, 0, Math.PI, 0); ctx.fill(); }
+  ctx.fillStyle = '#2a2230'; ctx.fillRect(0, 900, W, 180);
+  for (let i = 0; i < 10; i++) { const x = ((i * 300 - sc) % 3000 + 3000) % 3000 - 100; ctx.fillStyle = '#d8c070'; ctx.fillRect(x, 975, 120, 12); }
+  const p = adultF({ x: 800, y: 960, s: 1.05, expr: t > d / 2 ? 'determined' : 'angry', look: 0.8, pose: 'run', phase: t * 0.9, dir: 1 });
+  sweat(p.hx - 100, p.hy - 40, t);
+};
 Object.assign(LOOK, { title6: { noVig: 1 } });
