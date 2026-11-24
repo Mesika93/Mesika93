@@ -4,6 +4,20 @@ Channel: ZEROVERSE (@zeroversefilms) — animated "what if" stories and short fi
 Videos: 16:9, 4–7 min, no voice-over (on-screen text + music), English with Ukrainian subtitles.
 Default visual style: the v2 look from `video-plan/05-days-left/render/style2.js` (layered night cities, rim light, short shots with camera moves, hard cuts).
 
+## Production standard for every new video (user asked: better animation, editing, music, more eye candy)
+
+- **Animation**: characters blink, breathe, turn heads, walk with arm swing; secondary motion (hair, hood, steam, leaves);
+  no scene is ever static — something always moves.
+- **Eye candy**: particles (dust, sparks, snow, fireflies), light leaks and lens glow, volumetric beams, parallax depth layers,
+  background blur for depth of field, screen shake on impacts, slow-motion beats.
+- **Editing**: shots 3–8 s; transitions chosen per moment (hard cut, whip pan, match cut, zoom-through, flash on reveals);
+  cuts land on music beats; a clear act structure with its own colour grade per act.
+- **Text**: kinetic typography — words appear one by one, key word highlighted/glowing, gentle scale/blur-in.
+- **Music by theme**: score built for the topic and the acts (e.g. mystery → ticking + pads, sad → piano + strings,
+  rise → drums + build, climax → full); real silence before the key reveal. If the user provides a royalty-free track
+  (YouTube Audio Library etc.), sync cuts to its beats instead of the synthesized score.
+- Check stills of every shot before the full render; fix overlaps and empty frames.
+
 ## After finishing every new video — publishing package (in chat AND in `output/PUBLISH.md`)
 
 Give it ready to paste, in English, written carefully (grammar, rhythm, no filler):
