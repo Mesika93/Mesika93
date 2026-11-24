@@ -110,6 +110,18 @@ T.nobody = () => {
   vignette(0.5);
   bigText(['NOBODY.'], 600, 190, 230, -0.04);
 };
+T.daysleft = () => {
+  bg('rgba(255,90,40,0.45)', 'rgba(255,170,90,0.4)', 1350, 650);
+  const m = person({ x: 1420, y: 1330, s: 2.2, kind: 'mom', old: true, skin: C.momSkin, top: '#d8c3a0', expr: 'happy', look: -0.5, blush: true }); head3d(m, 'rgba(255,170,80,1)', -1);
+  const z = person({ x: 560, y: 1420, s: 2.3, expr: 'shock', look: 0.8 }); head3d(z, 'rgba(255,140,60,1)', 1);
+  // red counter above mom
+  const ty = m.hy - m.R - 200;
+  glow(m.hx, ty, 300, 'rgba(255,60,40,0.7)');
+  rr(m.hx - 180, ty - 85, 360, 170, 85); fs('rgba(10,5,5,0.85)', 8, '#ff4a3a');
+  ctx.font = '150px Lucky'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#ff4a3a'; ctx.fillText('214', m.hx, ty + 8);
+  vignette(0.45);
+  bigText(['DAYS', 'LEFT.'], 520, 300, 200, -0.05);
+};
 `;
 
 (async () => {
