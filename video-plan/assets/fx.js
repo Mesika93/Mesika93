@@ -118,7 +118,9 @@ window.drawFrame = function (frame, fps) {
   if (tr === 'whip' && t < 0.3) ctx.translate((1 - ease(t / 0.3)) * -W * 0.35, 0);
   let zin = 1; if (tr === 'zoom' && t < 0.45) zin = 1 + 0.35 * (1 - ease(t / 0.45));
   // camera
-  if (sc.cam) { const k = ease(clamp(t / d)), c = sc.cam; const cx = lerp(c[0], c[3], k), cy = lerp(c[1], c[4], k), z = lerp(c[2], c[5], k) * zin;
+  if (sc.cam) { const k = ease(clamp(t / d)), c = sc.cam; const z = Math.max(1, lerp(c[2], c[5], k) * zin);
+    // keep the view inside the scene (no empty edges)
+    const cx = clamp(lerp(c[0], c[3], k), W / (2 * z), W - W / (2 * z)), cy = clamp(lerp(c[1], c[4], k), H / (2 * z), H - H / (2 * z));
     ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-cx, -cy); }
   else if (zin !== 1) { ctx.translate(W / 2, H / 2); ctx.scale(zin, zin); ctx.translate(-W / 2, -H / 2); }
   const t0 = sc.t0 || 0; S[sc.id](t + t0, d + t0, frame);
