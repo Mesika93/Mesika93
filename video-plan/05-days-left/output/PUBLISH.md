@@ -5,6 +5,19 @@
 - `thumb-DAYS-LEFT.jpg` — прев'ю 1280×720
 - `subtitles_uk.srt` — українські субтитри
 
+**Коротка версія (для v2)**
+```
+What If You Could See Your Days Left?
+```
+```
+One morning, a number appears above everyone's head. Days left.
+Then you see your mom's: 214.
+
+Call them today. ❤
+
+#whatif #animation #shortfilm
+```
+
 **Назва (основна)**
 What If You Could See How Many Days You Have Left?
 
