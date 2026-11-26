@@ -153,6 +153,19 @@ T.younger_ext = () => {
   vignette(0.4);
   bigText(['ME?'], 960, 170, 230, -0.04, '#ffd23a');
 };
+T.thoughts_ext = () => {
+  if (typeof thought === 'undefined') return;
+  PEOPLE = []; TIME = 0;
+  metro(0.3);
+  ctx.fillStyle = 'rgba(10,12,24,0.35)'; ctx.fillRect(0, 0, W, H);
+  const ps = [[220, '#3d8bd0'], [1450, '#5a9a4a'], [1760, '#a07fd0']].map(([x, c], i) => figure({ x, y: 1060, s: 1.05, top: c, pose: i === 0 ? 'sit' : 'stand', expr: 'calm', look: x < 960 ? 0.5 : -0.5, noBand: true }));
+  thought(330, 300, 'LOSER', 1, 0, { mode: 'red', size: 56 });
+  thought(1500, 300, 'WEIRD', 1, 0, { mode: 'red', size: 56 });
+  RIM = 'rgba(255,120,120,1)';
+  const z = person({ x: 900, y: 1400, s: 2.5, expr: 'shock', look: 0.3, top: '#d9692a' }); head3d(z, 'rgba(255,100,100,1)', 1);
+  vignette(0.45);
+  bigText(['THEY', 'KNOW?'], 960, 250, 190, -0.04, '#fff');
+};
 `;
 
 (async () => {
