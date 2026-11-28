@@ -166,6 +166,16 @@ T.thoughts_ext = () => {
   vignette(0.45);
   bigText(['THEY', 'KNOW?'], 960, 250, 190, -0.04, '#fff');
 };
+T.eighty_ext = () => {
+  if (typeof oldF === 'undefined') return;
+  PEOPLE = []; TIME = 0; ctx.fillStyle = '#0a0818'; ctx.fillRect(0, 0, W, H);
+  futureCity(0.5); ctx.fillStyle = '#12102a'; ctx.fillRect(0, 880, W, 200);
+  ctx.fillStyle = 'rgba(10,8,24,0.3)'; ctx.fillRect(0, 0, W, H);
+  RIM = 'rgba(255,120,220,1)';
+  const o = person(Object.assign({}, OLD, { x: 1200, y: 1430, s: 2.5, expr: 'shock', look: -0.3 })); head3d(o, 'rgba(255,120,220,1)', 1);
+  vignette(0.4);
+  bigText(['80.'], 430, 320, 330, -0.05, '#ffd23a');
+};
 `;
 
 (async () => {

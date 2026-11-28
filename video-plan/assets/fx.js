@@ -72,7 +72,7 @@ const GRADES = {
 function caption(time, sc) {
   const list = TL.captions.filter(c => time >= c.start && time < c.end);
   for (const c of list) {
-    const center = c.scene === 'card' || c.scene === 'title6', size = center ? 92 : 58, font = center ? `${size}px Lucky` : `bold ${size}px "DejaVu Sans"`;
+    const center = c.scene === 'card' || c.scene.startsWith('title'), size = center ? 92 : 58, font = center ? `${size}px Lucky` : `bold ${size}px "DejaVu Sans"`;
     ctx.font = font;
     const words = c.en.split(' '), plain = words.map(w => w.replace(/\*/g, ''));
     const lines = []; let cur = [], curW = 0, maxW = center ? 1500 : 1550, sp = ctx.measureText(' ').width;
